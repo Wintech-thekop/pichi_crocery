@@ -119,7 +119,9 @@ class _UserScreenState extends State<UserScreen> {
                 _listTiles(
                   title: 'Logout',
                   icon: IconlyLight.logout,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _showLogoutDialog(context);
+                  },
                   color: color,
                 ),
               ],
@@ -127,6 +129,51 @@ class _UserScreenState extends State<UserScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _showLogoutDialog(BuildContext context) async {
+    return await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/images/warning-sign.png',
+                height: 20,
+                width: 20,
+                fit: BoxFit.fill,
+              ),
+              const SizedBox(width: 8),
+              const Text('Sign out'),
+            ],
+          ),
+          content: Text('Do you want to Sign out?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+              },
+              child: TextWidget(
+                text: 'Cancel',
+                color: Colors.cyan,
+                textSize: 18,
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: TextWidget(
+                text: 'OK',
+                color: Colors.red,
+                textSize: 18,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
