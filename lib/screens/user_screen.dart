@@ -13,6 +13,14 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  final TextEditingController _addressTextController =
+      TextEditingController(text: "");
+  @override
+  void dispose() {
+    _addressTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
@@ -63,7 +71,9 @@ class _UserScreenState extends State<UserScreen> {
                   title: 'Address',
                   subtitle: 'My subtitle',
                   icon: IconlyLight.profile,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _showAddressDialog(context);
+                  },
                   color: color,
                 ),
                 _listTiles(
@@ -92,9 +102,7 @@ class _UserScreenState extends State<UserScreen> {
                 ),
                 SwitchListTile(
                   title: TextWidget(
-                    text: themeState.getDarkTheme
-                      ? 'Dark mode'
-                      : 'Light mode',
+                    text: themeState.getDarkTheme ? 'Dark mode' : 'Light mode',
                     color: color,
                     textSize: 22,
                   ),
@@ -119,6 +127,31 @@ class _UserScreenState extends State<UserScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _showAddressDialog(BuildContext context) async {
+    return await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Update'),
+          content: TextField(
+            // onChanged: (value) {
+            //   print('_addressTextController.text ==> ${_addressTextController.text}');
+            // },
+            controller: _addressTextController,
+            maxLines: 5,
+            decoration: const InputDecoration(hintText: "Your address"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {},
+              child: const Text('Update'),
+            ),
+          ],
+        );
+      },
     );
   }
 
