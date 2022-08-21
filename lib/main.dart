@@ -3,6 +3,7 @@ import 'package:pichi_grocery_app/provider/dark_theme_provider.dart';
 import 'package:pichi_grocery_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'consts/theme_data.dart';
+import 'screens/btm_bar_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Pichi Groecery',
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
           debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
+          home:  const BottomBarScreen(),
         );
       }),
     );
