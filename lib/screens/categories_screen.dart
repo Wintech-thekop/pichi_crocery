@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pichi_grocery_app/widgets/categories_widget.dart';
 
 class CategiriesScreen extends StatelessWidget {
   const CategiriesScreen({Key? key}) : super(key: key);
@@ -6,9 +7,7 @@ class CategiriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("This is Categories Screen"),
-      ),
+      body: Center(child: CategoriesWidget()),
     );
   }
 }
