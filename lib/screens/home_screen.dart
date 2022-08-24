@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pichi_grocery_app/provider/dark_theme_provider.dart';
 import 'package:pichi_grocery_app/services/utils.dart';
 import 'package:pichi_grocery_app/widgets/on_sale_widget.dart';
+import 'package:pichi_grocery_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,7 +48,26 @@ class _HomeScreenState extends State<HomeScreen> {
               autoplay: true,
             ),
           ),
-          OnSaleWidget(),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {},
+            child: TextWidget(
+              text: 'View all',
+              color: Colors.blue,
+              textSize: 20,
+              maxLine: 1,
+            ),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            height: size.height * 0.24,
+            child: ListView.builder(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return const OnSaleWidget();
+                }),
+          ),
         ],
       ),
     );
