@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final utils = Utils(context);
-    // Color color = utils.color;
+    Color color = utils.color;
     final themeState = utils.getTheme;
     Size size = utils.getScreenSize;
     return Scaffold(
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 8),
               Flexible(
                 child: SizedBox(
                   height: size.height * 0.22,
@@ -93,6 +93,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextWidget(text: 'Our Product', color: color, textSize: 22, isTitle: true,),
+                TextButton(
+              onPressed: () {},
+              child: TextWidget(
+                text: 'Browse all',
+                color: Colors.blue,
+                textSize: 20,
+                maxLine: 1,
+              ),
+            ),
+              ],
+            ),
           ),
         ],
       ),

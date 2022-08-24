@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:pichi_grocery_app/services/utils.dart';
@@ -30,17 +31,23 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      'https://i.ibb.co/F0s3FHQ/Apricots.png',
-                      //  width: size.width * 0.22,
+                    FancyShimmerImage(
+                      imageUrl: 'https://i.ibb.co/F0s3FHQ/Apricots.png',
                       height: size.width * 0.22,
-                      fit: BoxFit.fill,
+                      width: size.width * 0.22,
+                      boxFit: BoxFit.fill,
                     ),
+                    // Image.network(
+                    //   'https://i.ibb.co/F0s3FHQ/Apricots.png',
+                    //   //  width: size.width * 0.22,
+                    //   height: size.width * 0.22,
+                    //   fit: BoxFit.fill,
+                    // ),
                     Column(
                       children: [
                         TextWidget(
